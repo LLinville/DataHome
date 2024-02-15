@@ -1,0 +1,2 @@
+Data pin pulled high (10k)
+
