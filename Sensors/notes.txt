@@ -1,4 +1,4 @@
-Data pin pulled high (10k)
+Data pin pulled high (10k) - Done on module
 
 
 
