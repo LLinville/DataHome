@@ -1,2 +1,12 @@
 Data pin pulled high (10k)
 
+
+
+
+
+Have chip constantly listening for requests
+    * Energy expensive
+
+Have chip send data
+    * Requires automatically finding data server IP
+    
