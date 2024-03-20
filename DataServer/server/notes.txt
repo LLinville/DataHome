@@ -2,3 +2,6 @@ Locate sensors on the network
 * Sensor modules use port 60000 
 * GET http://192.168.1.X:60000/health/check
 
+
+
+Every few minutes, if we haven't heard from one of the boards, run a scan of all 192.168.1.X IPs to locate board. 

@@ -29,7 +29,7 @@ ESP8266WebServer server(REST_PORT);
 // Replace with your network credentials
 const char* ssid     = WIFI_SSID;
 const char* password = WIFI_PASSWORD;
-String boardId = "3";
+String boardId = "2";
 String sensorId = "1";
 
 // Current time
@@ -72,7 +72,7 @@ void getHealthCheck() {
     float t = dht.readTemperature();
     //delay(2500);
     String json = "{\n";
-    json += "\"currentTime\":" + currentTime;
+    json += "\"boardUptime\":" + currentTime;
     json += ",\n\"boardId\":" + boardId;
     json += ",\n\"sensorId\":" + sensorId;
     json += ",\n\"temperatureC\":" + String(t);
