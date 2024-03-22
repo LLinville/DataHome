@@ -29,7 +29,7 @@ ESP8266WebServer server(REST_PORT);
 // Replace with your network credentials
 const char* ssid     = WIFI_SSID;
 const char* password = WIFI_PASSWORD;
-String boardId = "2";
+String boardId = "1";
 String sensorId = "1";
 
 // Current time
@@ -57,10 +57,10 @@ void handleNotFound() {
 
 void serverRouting() {
     server.on("/", HTTP_GET, []() {
-        server.send(200, F("text/html"),
-            F("Welcome to the REST Web Server"));
+        String message = "Sensor rest server for board " + boardId;
+        server.send(200, F("text/html"), message);
     });
-    server.on(F("/health/info"), HTTP_GET, getHealthCheck);
+    server.on(F("/sensor/info"), HTTP_GET, getHealthCheck);
 }
 
 void getHealthCheck() {
@@ -81,7 +81,7 @@ void getHealthCheck() {
     server.send(200, F("text/plain"), json);
 }
 
-void getSensorData() {
+void getSensorDataSerial() {
     delay(2500);
     float h = dht.readHumidity(true);
     delay(2500);

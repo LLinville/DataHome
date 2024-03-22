@@ -4,4 +4,7 @@ Locate sensors on the network
 
 
 
-Every few minutes, if we haven't heard from one of the boards, run a scan of all 192.168.1.X IPs to locate board. 
+Every few minutes, if we haven't heard from one of the boards, run a scan of all 192.168.1.X IPs to locate board.
+
+Every second, shuffle order of boards to scan
+for each board, if it's been a long enough interval since last read, fetch data
