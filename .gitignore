@@ -154,3 +154,5 @@ cython_debug/
 DataServer/saved_logs/
 *.log
 
+
+*/config.h
