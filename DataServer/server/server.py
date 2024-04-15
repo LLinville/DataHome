@@ -8,6 +8,8 @@ address_format = "http://192.168.1.%s:60000"
 
 board_addresses = {}
 
+
+
 def update_addresses():
     for i in range(20): # out of 255
         url = address_format % i + "/health/info"
@@ -27,7 +29,7 @@ def update_addresses():
 
 
 # If a board has been offline for this many seconds, rescan for it
-boards_rescan_interval = 2 * 60
+# boards_rescan_interval = 2 * 60
 
 if __name__ == "__main__":
     update_addresses()
@@ -40,12 +42,16 @@ if __name__ == "__main__":
                 url = f"{board_address}/health/info"
                 try:
                     response = requests.get(url)
+                    if response.status_code == 200:
+                        data = json.loads(response.text)
+                        timestamp = str(time.time()).split('.')[0]
+                        print(f"{timestamp} {str(data)}")
+                        logfile.write(f"{timestamp} {json.dumps(data)}\n")
+                        pass
                 except Exception as ex:
                     print("Exception scanning board at ip ", ex)
                     continue
-                data = json.loads(response.text)
-                timestamp = str(time.time()).split('.')[0]
-                print(f"{timestamp} {str(data)}")
-                logfile.write(f"{timestamp} {response.text.splitlines()[4:6]}\n")
+                
         logfile.close()
-        time.sleep(15)
+        print("\n")
+        time.sleep(10)

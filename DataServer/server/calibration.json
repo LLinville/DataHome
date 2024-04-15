@@ -1,0 +1,18 @@
+[
+    {
+        "boardId":1,
+        "temperatureCorrection": 0,
+        "rhCorrection": 0
+    },
+    {
+        "boardId":2,
+        "temperatureCorrection": 0,
+        "rhCorrection": 0
+    },
+    {
+        "boardId":3,
+        "temperatureCorrection": 0,
+        "rhCorrection": 0
+    }
+    
+]
