@@ -1,9 +1,10 @@
 from matplotlib import pyplot as plt
 import os, glob
 import json
+import converters
 
 lines = []
-for filename in glob.glob('*.log'):
+for filename in glob.glob('.\\DataServer\\saved_logs\\*.log'):
     with open(os.path.join(os.getcwd(), filename), 'r') as logfile: # open in readonly mode
         file_lines = logfile.readlines()
         file_lines = [l for l in file_lines if l.strip()]
@@ -38,7 +39,7 @@ for line, line_json in zip(lines, lines_json):
 #print([line.split(":")[1][:5] for line in lines])
 
 
-earliest_time_to_graph = 1712941726
+earliest_time_to_graph = 0*1712941726
 
 for board_id in [3,2,1]:
     times = [
@@ -60,7 +61,14 @@ for board_id in [3,2,1]:
 
     x, y = [], []
 
+    to_graph = humidities
     to_graph = temperatures
+    # print(len(temperatures))
+    # print(len(humidities))
+
+    # to_graph = [converters.absolute_humidity(t, rh) for t, rh in zip(temperatures, humidities)]
+    # print(to_graph[:10])
+
     for t, v in zip(times, to_graph):
         if t >= earliest_time_to_graph:
             x.append(t)
